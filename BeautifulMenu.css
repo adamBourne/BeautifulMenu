@@ -1,0 +1,78 @@
+body { /* remove whitespace around outside of body */
+margin: 0em; 
+}
+
+.menu:before, .menu [type="folder"]:before, .menu [type="file"]:before {
+font-size: 15px; 
+line-height: 3; 
+font-family: Helvetica; 
+font-weight: bold; 
+/*outline: 1px solid black; */
+content: attr(name); 
+display: block; /* so node fills container node default is inline */
+}
+
+
+.menu, .menu [type="folder"], .menu [type="file"] {
+margin-left: 1em; /* indent sub menus and options */
+overflow: hidden; */ hide content for closed div node */ 
+/* disable menu text highlighting/selection */
+-webkit-touch-callout: none; 
+-webkit-user-select: none; 
+-khtml-user-select: none; 
+-moz-user-select: none; 
+-ms-user-select: none;
+
+user-select: none;
+color: black; 
+}
+
+.menu, .menu>[type="folder"], .menu>[type="file"] { 
+margin-left: 0em; /* don't indent menu root node or outmost menu */
+}
+
+.menu {
+position: fixed; 
+width: 100%; 
+background: white; 
+}
+
+.menu:before { // menu bar and symbol; 
+content: "\00a0\2630\00a0" attr(name); /* menu symbol */
+color: white; 
+/*text-shadow: -0.87em -0.5em 1em red, 0.87em -0.5em 1em green, 0em 1em 1em blue; */
+background: gray; 
+}
+
+.menu [type="folder"]:before { /* folder title node */
+content: "\00a0\1F4C1\00a0" attr(name); 
+
+/* style folder 'tab' */
+background: yellow; 
+background: -webkit-linear-gradient(yellow, yellow, yellow, yellow, yellow, gray); /* For Safari 5.1 to 6.0 */ 
+background: -o-linear-gradient(yellow, yellow, yellow, yellow, yellow, gray); /* For Opera 11.1 to 12.0 */ 
+background: -moz-linear-gradient(yellow, yellow, yellow, yellow, yellow, gray); /* For Firefox 3.6 to 15 */ 
+background: linear-gradient(yellow, yellow, yellow, yellow, yellow, gray); /* Standard syntax (must be last) */
+
+display: inline-block; /* force 'tab' fit to width of tab title */
+padding-right: 2em; 
+border-top-left-radius: 1em; 
+border-top-right-radius: 3em; 
+}
+
+.menu [type="folder"].open:before {
+content: "\00a0\1F4C2\00a0" attr(name); 
+}
+
+.menu div[type="file"]:before { /* style file nodes */
+content: "\00a0\1F4C4\00a0" attr(name); 
+background: white; 
+color: #000077; 
+border-top: 1px solid #DDDDFF; 
+border-left: 1px solid pink; 
+}
+
+.menu [type="file"].selected:before { /* last clicked file node */ 
+text-shadow: 0em 0em 1em #000077, 0em 0em 1em #000077, 0em 0em 1em #000077; 
+color: white; 
+}
